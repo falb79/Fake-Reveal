@@ -1,0 +1,129 @@
+body {
+    margin: 0;
+    font-family: Roboto, sans-serif;
+    background: white;
+}
+
+header, footer, .hero {
+    width: 100%;
+}
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between; /* logo left — navbar right */
+    align-items: center; 
+    padding: 20px 0;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: flex-end;
+    gap: 40px;
+    padding: 20px 0;
+}
+
+.nav-item {
+    font-size: 22px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* Logo */
+.logo-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-box {
+    width: 60px;
+    height: 60px;
+    background: #3D57C0;
+    border-radius: 10px;
+}
+
+.logo-text {
+    font-size: 32px;
+    font-weight: 900;
+}
+
+/* Hero Section */
+.hero {
+    background: #E9F0FF;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.hero-title {
+    font-size: 48px;
+    font-weight: 900;
+}
+
+.hero-title span.blue {
+    color: #3D57C0;
+}
+
+/* Upload Box */
+.upload-box {
+    background: white;
+    border-radius: 20px;
+    border: 2px solid #d4d4d4;
+    padding: 60px 20px;
+    margin: 40px auto;
+    max-width: 600px;
+    text-align: center;
+}
+
+.upload-icon {
+    width: 70px;
+    height: 70px;
+    background: #ccc;
+    margin: auto;
+    border-radius: 10px;
+}
+
+/* Footer */
+footer {
+    background: #111827;
+    color: white;
+    text-align: center;
+    padding: 40px 0;
+    margin-top: 60px;
+}
+
+.footer-logo {
+    font-size: 32px;
+    font-weight: 900;
+}
+
+.footer-slogan {
+    font-size: 18px;
+    margin-top: 10px;
+    opacity: .8;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+    font-size: 16px;
+    opacity: .8;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+
+    .navbar {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px
+    }}
