@@ -1,52 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Vera - AI Video Detection</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deepfake Detection Platform</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
-
 <body>
 
-<header class="container">
-    <div class="logo-row">
-        <div class="logo-box"></div>
-        <div class="logo-text">Vera</div>
-    </div>
-
-    <nav class="navbar">
-        <div class="nav-item">How it works</div>
-        <div class="nav-item">About us</div>
-        <div class="nav-item">Contact</div>
-    </nav>
+<header>
+  <div class="logo">DeepGuard AI</div>
+  <nav>
+    <a href="#upload">Upload</a>
+    <a href="#features">Features</a>
+    <a href="#examples">Examples</a>
+    <a href="#faq">FAQ</a>
+  </nav>
 </header>
 
 <section class="hero">
-    <div class="container">
-        <div class="hero-title">
-            Detect Video Manipulation with <span class="blue">AI Precision</span>
-        </div>
-    </div>
+  <h1>Advanced Deepfake Detection</h1>
+  <p>Upload an image or video and let AI detect manipulation instantly.</p>
+  <video autoplay muted loop style="max-width:700px; border-radius:12px; margin-top:20px;">
+    <source src="./assets/example-video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 </section>
 
-<section class="container">
-    <div class="upload-box">
-        <div class="upload-icon"></div>
-    </div>
+<section class="upload-section" id="upload">
+  <h2>Upload Image or Video</h2>
+  <div class="upload-box" onclick="document.getElementById('fileInput').click()">Click to Upload File</div>
+  <input type="file" id="fileInput" hidden accept="image/*,video/*" />
+  <div id="uploaded-display"></div>
+  <div id="loading">Processing...</div>
+  <div id="progress-container">
+    <div id="progress-bar"></div>
+  </div>
+  <div id="result-box">
+    <h3>Result:</h3>
+    <p id="result-text"></p>
+  </div>
 </section>
+
+<section class="features" id="features">
+  <div class="card" onclick="this.classList.toggle('expanded')">
+    <h3>AI Deepfake Detection</h3>
+    <p class="more-info">Advanced algorithms flag manipulated content using pixel, motion, and shadow analysis.</p>
+  </div>
+  <div class="card" onclick="this.classList.toggle('expanded')">
+    <h3>Real-Time Execution</h3>
+    <p class="more-info">Fast processing for instant results without storing your files.</p>
+  </div>
+  <div class="card" onclick="this.classList.toggle('expanded')">
+    <h3>Secure & Private</h3>
+    <p class="more-info">All uploads are processed locally or securely; nothing is saved.</p>
+  </div>
+</section>
+
+<section class="examples-section" id="examples">
+  <h2>Real vs Fake Examples</h2>
+  <div class="carousel" id="carousel">
+    <div class="carousel-item"><img src="./assets/real1.jpg"><p>Real</p></div>
+    <div class="carousel-item"><img src="./assets/fake1.jpg"><p>Fake</p></div>
+    <div class="carousel-item"><img src="./assets/real1.jpg"><p>Real</p></div>
+    <div class="carousel-item"><img src="./assets/fake2.jpg"><p>Fake</p></div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <h2>Frequently Asked Questions</h2>
+  <details><summary>How does the detection work?</summary><p>AI models analyze inconsistencies in pixels, shadows, and movement.</p></details>
+  <details><summary>Is my data stored?</summary><p>No. Your uploads are processed locally in this demo.</p></details>
+  <details><summary>Can I check videos?</summary><p>Yes, both images and videos are supported.</p></details>
+</section>
+
+<!-- Chatbot -->
+<div id="chatbot-container">
+  <button id="chatbot-toggle">Chat</button>
+  <div id="chatbot-window">
+    <div id="chatbot-log"></div>
+    <input type="text" id="chatbot-input" placeholder="Ask something..." />
+    <button id="chatbot-send">Send</button>
+    <p style="font-size:12px; margin-top:5px;">Powered by ChatGPT API (insert your key in script.js)</p>
+  </div>
+</div>
 
 <footer>
-    <div class="footer-logo">Vera</div>
-    <div class="footer-slogan">Advanced AI-powered Deepfake detection</div>
-
-    <div class="footer-links">
-        <span>Terms and conditions</span>
-        <span>About us</span>
-        <span>Contact</span>
-    </div>
+  <p>© 2025 DeepGuard AI – All Rights Reserved</p>
 </footer>
 
 </body>
-
 </html>
