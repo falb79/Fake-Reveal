@@ -4,8 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Deepfake Detection Platform</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+  <!-- if no server is running -->
+  <!-- <link rel="stylesheet" href="../static/style.css"> -->
+  <script src="../static/script.js" defer></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="../static/script.js" defer></script>
+
 </head>
 <body>
 
@@ -23,24 +28,41 @@
   <h1>Advanced Deepfake Detection</h1>
   <p>Upload an image or video and let AI detect manipulation instantly.</p>
   <video autoplay muted loop style="max-width:700px; border-radius:12px; margin-top:20px;">
-    <source src="./assets/example-video.mp4" type="video/mp4">
+    <source src="../static/assets/example-video.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
 </section>
 
 <section class="upload-section" id="upload">
+  <form action="/" method="post" enctype="multipart/form-data">
   <h2>Upload Image or Video</h2>
-  <div class="upload-box" onclick="document.getElementById('fileInput').click()">Click to Upload File</div>
-  <input type="file" id="fileInput" hidden accept="image/*,video/*" />
-  <div id="uploaded-display"></div>
+  <h2>Upload Video (Lip-sync)</h2>
+        <input type="file" name="video" accept="video/mp4">
+        <h2>Upload Image (Deepfake Image)</h2>
+        <input type="file" name="image" accept="image/*">
+        <br><br>
+        <button type="submit">Analyze</button>
+  <!-- <div class="upload-box" onclick="document.getElementById('fileInput').click()">Click to Upload File</div> -->
+  <!-- <input type="file" id="fileInput" hidden accept="image/*,video/*" /> -->
+  <!-- <div id="uploaded-display"></div>
   <div id="loading">Processing...</div>
   <div id="progress-container">
     <div id="progress-bar"></div>
-  </div>
-  <div id="result-box">
+  </div> -->
+  </form>
+  
+    {% if video_result %}
+        <h3>Video Result: {{ video_result }} (Confidence: {{ video_conf*100|round(2) }}%)</h3>
+    {% endif %}
+
+    {% if image_result %}
+        <h3>Image Result: {{ image_result }} (Confidence: {{ image_conf*100|round(2) }}%)</h3>
+    {% endif %}
+  
+  <!-- <div id="result-box">
     <h3>Result:</h3>
     <p id="result-text"></p>
-  </div>
+  </div> -->
 </section>
 
 <section class="features" id="features">
@@ -61,10 +83,10 @@
 <section class="examples-section" id="examples">
   <h2>Real vs Fake Examples</h2>
   <div class="carousel" id="carousel">
-    <div class="carousel-item"><img src="./assets/real1.jpg"><p>Real</p></div>
-    <div class="carousel-item"><img src="./assets/fake1.jpg"><p>Fake</p></div>
-    <div class="carousel-item"><img src="./assets/real1.jpg"><p>Real</p></div>
-    <div class="carousel-item"><img src="./assets/fake2.jpg"><p>Fake</p></div>
+    <div class="carousel-item"><img src="../static/assets/real1.jpg"><p>Real</p></div>
+    <div class="carousel-item"><img src="../static/assets/fake1.jpg"><p>Fake</p></div>
+    <div class="carousel-item"><img src="../static/assets/real1.jpg"><p>Real</p></div>
+    <div class="carousel-item"><img src="../static/assets/fake2.jpg"><p>Fake</p></div>
   </div>
 </section>
 
