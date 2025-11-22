@@ -2,3 +2,16 @@ Flask==2.3.2
 torch
 transformers
 pillow
+tensorboardX 
+torch==2.5.0 
+torchvision==0.20.0 
+torchaudio==2.5.0 
+scikit-image 
+dlib 
+omegaconf==2.0.6 
+hydra-core==1.0.7 
+scikit-video
+scipy
+sentencepiece
+python_speech_features
+whisper
