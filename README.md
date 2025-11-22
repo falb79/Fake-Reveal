@@ -50,7 +50,7 @@ open the terminal and run: `conda activate venv_py39`
 
 run: `app/api.py`
 
-
+### Note: also create folders uploads and mouth_roi inside the project folder 
 # ------
 
 ## To Run The code for the FIRST time 
