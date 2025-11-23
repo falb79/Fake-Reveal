@@ -1,7 +1,21 @@
 ## Prerequisites:
-1. Download cmake - required for dlib 
-2. Download ffmpeg 
+1. Download cmake - required for dlib
+
+   https://cmake.org/download/
+
+   choose (Windows x64 Installer) or (macOS) 
+2. Download ffmpeg
+
+   https://www.gyan.dev/ffmpeg/builds/
+
+   choose (ffmpeg-git-full.7z)
+
 3. Add both cmake and ffmpeg to system path
+
+   for cmake, add it to system path while installation
+   
+   for FFmpeg, unzip the folder, then use PowerShell (Run as Administrator) to add FFmpeg to SYSTEM PATH
+   
 4. Install conda (if not already installed)
 
 ## To use the project for the first time: 
