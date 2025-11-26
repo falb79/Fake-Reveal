@@ -62,7 +62,7 @@ Open the project in VS code
 
 open the terminal and run: `conda activate venv_py39`
 
-run: `app/api.py`
+run: `python app/api.py`
 
 ### Note: also create folders uploads and mouth_roi inside the project folder 
 # ------
