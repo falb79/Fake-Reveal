@@ -18,12 +18,18 @@
    
 4. Install conda (if not already installed)
 
+5. Install Build Tools (if not already installed)
+
+   from here https://visualstudio.microsoft.com/visual-cpp-build-tools/
+   check (C++ build tools)
+
+   
 ## To use the project for the first time: 
 
 ### 1. Clone our project's repository 
 `git clone https://github.com/falb79/DeepfakeVideoDetection.git`
 
-### 2. Clone AV-HuBERT repository inside the project's folder
+### 2. Clone AV-HuBERT repository (inside the project's folder)
 In your terminal run: 
 
 ```
@@ -54,6 +60,10 @@ cd fairseq
 
 pip install --editable ./
 ```
+
+if you encountered any issues for this command, use Anaconda CMD as Administrator 
+
+
 ### to close the virtual environment run: conda deactivate 
 
 
@@ -74,28 +84,5 @@ open the terminal and run: `conda activate venv_py39`
 run: `python app/api.py`
 
 ### Note: also create folders uploads and mouth_roi inside the project folder 
-# ------
 
-## To Run The code for the FIRST time 
 
-Write the Following commands In CMD or in terminal for an empty folder in VS code 
-
-1- git clone https://github.com/falb79/DeepfakeVideoDetection.git
-
-2- python -m venv venv
-
-3- venv\Scripts\activate
-
-4- pip install -r requirements.txt
-
-5- python -m app.main
-
-you should be able to open http://127.0.0.1:5000 in the browser 
-
-## To Run The code for the SECOND time 
-
-Write these commands in project terminal
-
-1- venv\Scripts\activate
-
-2- python -m app.main
