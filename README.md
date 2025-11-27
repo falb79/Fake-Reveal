@@ -27,7 +27,7 @@
 ## To use the project for the first time: 
 
 ### 1. Clone our project's repository 
-`git clone https://github.com/falb79/DeepfakeVideoDetection.git`
+`git clone https://github.com/falb79/Fake-Reveal`
 
 ### 2. Clone AV-HuBERT repository (inside the project's folder)
 In your terminal run: 
@@ -44,7 +44,7 @@ git submodule update
 ### 3. Create a virtual environment using conda, and install requirements  
 In a new terminal run:
 ```
-conda create -n venv_py39 python-3.9
+conda create -n venv_py39 python=3.9
 
 conda activate venv_py39
 
