@@ -57,6 +57,15 @@ pip install --editable ./
 ### to close the virtual environment run: conda deactivate 
 
 
+## Download checkpoint and files needed for preprocessing
+In the project create a folder called models
+
+place model checkpoint "fine-tuned model", shape_predictor_68_face_landmarks.dat, and 20words_mean_face.npy in this folder
+
+You will find them in their GitHub repository `https://github.com/facebookresearch/av_hubert`
+and in the demo provided.
+
+
 ## To run the project:
 Open the project in VS code
 
