@@ -13,8 +13,8 @@ mouth_roi_path = "mouth_roi/roi.mp4"
 app = Flask(__name__)
 
 
-@app.route('/predict', methods=['POST'])
-def predict():
+@app.route('/predict_video', methods=['POST'])
+def predict_video():
     if "video" not in request.files:
         return jsonify({"error": "No video file uploaded"}), 400
 
@@ -33,12 +33,18 @@ def predict():
 
         # Compare similarity
         similarity = classify_input(lip_text, audio_text)
+        if similarity > 50: label = "Real"  
+        else: label = "Fake"
 
-        return jsonify({
+        result = jsonify({
+            "label": label,
+            "score": f"{similarity:.2f}",
             "lip_reading_text": lip_text,
             "speech_text": audio_text,
-            "classification": similarity
         })
+        result.headers.add("Access-Control-Allow-Origin", "*")
+
+        return result
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
@@ -49,7 +55,7 @@ def predict():
 
 
 @app.route('/predict_image', methods=['POST'])
-def classify_image():
+def predict_image_output():
     if "image" not in request.files:
         return jsonify({"error": "No image file uploaded"}), 400
 
@@ -60,17 +66,20 @@ def classify_image():
     image_file.save(image_path)
 
     label, score = predict_image(image_path)
-    return jsonify({
+    result = jsonify({
             "label": label,
-            "score": score
+            "score": f"{score*100:.2f}"
         })
+    result.headers.add("Access-Control-Allow-Origin", "*")
+
+    return result
     
 
 
 @app.route("/", methods=["GET"])
 def root():
     #return "API running!"
-    return render_template('index2.html')
+    return render_template('index.html')
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8000, debug=True)
+    app.run(debug=True)
