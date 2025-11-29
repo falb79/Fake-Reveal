@@ -1,7 +1,7 @@
 # import the required libraries 
 import os, sys
 from flask import Flask, request, jsonify, render_template
-# add the bath to the backend models
+# add the path to the backend models
 backend_dir = os.path.abspath("backend")
 sys.path.append(backend_dir)
 from inference import get_text_from_lip_reading, get_text_from_stt, classify_input
@@ -84,6 +84,11 @@ def predict_image_output():
         })
     # add header to the response
     result.headers.add("Access-Control-Allow-Origin", "*")
+
+    # remove temporary image file 
+    if os.path.exists(image_path):
+        os.remove(image_path)
+        
     # return the result
     return result
     
