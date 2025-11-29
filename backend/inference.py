@@ -1,18 +1,21 @@
+# import the required libraries for lip reading model
 import cv2, os, sys
 import tempfile
 from argparse import Namespace
+# add the avhubert repository path to the system path --required for the following imports--
 repo_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "av_hubert/avhubert")
 sys.path.append(repo_path)
 import fairseq
 from fairseq import checkpoint_utils, options, tasks, utils
 from fairseq.dataclass.configs import GenerationConfig
-import whisper
-from difflib import SequenceMatcher
+import whisper # import speech-to-text model
+from difflib import SequenceMatcher # import the function to calculate sentence similarity
 
 if len(sys.argv) == 1:
-    # Append a dummy argument 
+    # Append a dummy argument to avoid model duplication error
     sys.argv.append("dummy_arg_to_prevent_error")
 
+# function to run the inference code on the lip reading model
 def predict(video_path, ckpt_path, user_dir):
   num_frames = int(cv2.VideoCapture(video_path).get(cv2.CAP_PROP_FRAME_COUNT))
   data_dir = tempfile.mkdtemp()
@@ -50,22 +53,32 @@ def predict(video_path, ckpt_path, user_dir):
   hypo = decode_fn(hypo)
   return hypo
 
+# function to return the text output of the lip reading model
 def get_text_from_lip_reading(roi_path):
-    mouth_roi_path, ckpt_path = roi_path, "models/finetune-model.pt"
-    user_dir = "av_hubert/avhubert"
+    mouth_roi_path, ckpt_path = roi_path, "models/finetune-model.pt" # checkpoint of the finetune model
+    user_dir = "av_hubert/avhubert" # the directory to the model
     hypo = predict(mouth_roi_path, ckpt_path, user_dir)
     return hypo
 
+# function to get text output of the speech-to-text model
 def get_text_from_stt(video_path):
+   # load the model
    model = whisper.load_model("medium") 
+   # transcribe the audio
    result = model.transcribe(video_path)
+   # return the text result
    return result["text"]
 
+"""
+function to calculate the similarity between text from lip reading model
+and text from speech-to-text model
+"""
 def classify_input(lip_reading_text, stt_text):
     similarity = SequenceMatcher(None, lip_reading_text, stt_text).ratio() * 100
-    if(similarity > 50):
-       return "real"
-    else:
-       return "fake"
+    # classify the result as Real/Fake
+    if similarity > 50: label = "Real"  
+    else: label = "Fake"
+    return similarity, label
+
 
    

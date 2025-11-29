@@ -537,7 +537,7 @@ header nav a {
 }
 
 .footer-icon {
-    width: 32px;          /* نفس المقاس لكل الأيقونات */
+    width: 32px;          /* use the same size for all icons */
     height: 32px;
     opacity: 0.9;
     display: flex;

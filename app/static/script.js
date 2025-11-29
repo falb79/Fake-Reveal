@@ -1,4 +1,4 @@
-// upload
+// get elements 
 const imageBtn = document.getElementById('image-btn');
 const videoBtn = document.getElementById('video-btn');
 const fileInput = document.getElementById('file-input');
@@ -10,8 +10,11 @@ const resultLabel = document.getElementById('result-label');
 const resultPercentage = document.getElementById('result-percentage');
 const uploadAgainBtn = document.getElementById('upload-again');
 
+// default the current user selection to image
 let currentType = 'image';
 
+// add event listener to the image button to change the current selection
+// and update the accepted file types
 imageBtn.addEventListener('click', () => {
   currentType = 'image';
   imageBtn.classList.add('active');
@@ -19,6 +22,8 @@ imageBtn.addEventListener('click', () => {
   fileInput.accept = 'image/*';
 });
 
+// add event listener to the video button to change the current selection
+// and update the accepted file types
 videoBtn.addEventListener('click', () => {
   currentType = 'video';
   videoBtn.classList.add('active');
@@ -26,7 +31,9 @@ videoBtn.addEventListener('click', () => {
   fileInput.accept = 'video/*';
 });
 
+// add event listener to the file input element 
 fileInput.addEventListener('change', (e) => {
+  // get the uploaded file
   const file = e.target.files[0];
   if (!file) return;
 
@@ -36,70 +43,72 @@ fileInput.addEventListener('change', (e) => {
   resultBox.style.display = 'none';
   preview.innerHTML = '';
 
+  // create formdata objects for image and video to be used to fetch the data
   const imageFormData = new FormData();
   const videoFormData = new FormData();
   const url = URL.createObjectURL(file);
   let element;
 
+  // create image object if it's the current selection
   if (currentType === 'image') {
     element = document.createElement('img');
     element.src = url;
+    // add it to the formdata object
     imageFormData.append("image", file);
+    // fetch the data when the image is loaded
     element.onload = () => {
       fetchData(element, "predict_image", imageFormData);
     };
-  } else {
+  } 
+  // create video object if it's the current selection
+  else {
     element = document.createElement('video');
     element.src = url;
     element.controls = true;
+    // add it to the formdata object
     videoFormData.append("video", file);
+    // fetch the data when the video is loaded
     element.onloadeddata = () => {
       fetchData(element, "predict_video", videoFormData);
     };
   }
 });
 
-
+// function to fetch the data from the model's endpoints 
 async function fetchData(element, endpoint, formData) {
+  // define the url to the correct route
   url = `http://localhost:5000/${endpoint}`; 
   try {
+    // send the request and wait for the response
     const response = await fetch(url, {
       method: "POST",
       body: formData 
     }); 
+    // handle http errors
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-    const data = await response.json(); // Parse the JSON response
+    const data = await response.json(); // parse the JSON response
+    // call the showResult function to display the results 
     showResult(data["label"], data["score"]);
   } catch (error) {
     console.error("Error fetching data:", error);
   }
   finally{
+    // hide the spinner and display the uploaded file
     spinnerBox.style.display = 'none';
     preview.appendChild(element);
     resultBox.style.display = 'block';
   }
 }
 
+// function to add the results to the corresponding elements 
 function showResult(label, score) {
   resultLabel.textContent = label;
   resultPercentage.textContent = score;
 }
 
-// function showResult(element) {
-//   spinnerBox.style.display = 'none';
-//   preview.appendChild(element);
-//   resultBox.style.display = 'block';
-
-//   const outcomes = ['Fake', 'Real'];
-//   const randomOutcome = outcomes[Math.floor(Math.random() * outcomes.length)];
-//   resultLabel.textContent = randomOutcome;
-
-//   const percent = currentType === 'image' ? Math.floor(Math.random() * 41 + 60) : '-';
-//   resultPercentage.textContent = percent + (percent !== '-' ? '%' : '');
-// }
-
+// add event listener to upload again button 
 uploadAgainBtn.addEventListener('click', () => {
   fileInput.value = '';
   preview.innerHTML = '';
@@ -128,6 +137,7 @@ const images = [
     { src: "https://i.ibb.co/vCSJ9T1t/fake-1006.jpg", type: "Fake" }
 ];
  
+// randomly display the images in the game section
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -145,6 +155,7 @@ const feedback = document.getElementById('demo-feedback');
 const realBtn = document.getElementById('real-btn');
 const fakeBtn = document.getElementById('fake-btn');
 
+// display the images in the game section
 function showImage(index) {
     demoWrapper.innerHTML = `
         <div class="demo-card big-card">
@@ -161,6 +172,7 @@ function updateDots(index) {
     ).join('');
 }
 
+// check user's answers 
 function checkAnswer(answer) {
 
     const clickedBtn = answer === "Real" ? realBtn : fakeBtn;

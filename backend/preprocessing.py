@@ -1,13 +1,15 @@
+# import the required libraries 
 import dlib, cv2, os, sys
 import numpy as np
 import skvideo
 import skvideo.io
 from tqdm import tqdm
+# add the avhubert repository path to the system path --required for the following import--
 repo_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../av_hubert/avhubert")
 sys.path.append(repo_path)
 from preparation.align_mouth import landmarks_interpolate, crop_patch, write_video_ffmpeg
 
-
+# function to detect the facial landmarks
 def detect_landmark(image, detector, predictor):
     gray = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
     rects = detector(gray, 1)
@@ -19,6 +21,7 @@ def detect_landmark(image, detector, predictor):
             coords[i] = (shape.part(i).x, shape.part(i).y)
     return coords
 
+# function to preprocess the video and extract the mouth roi
 def preprocess_video(input_video_path, output_video_path, face_predictor_path, mean_face_path):
   detector = dlib.get_frontal_face_detector()
   predictor = dlib.shape_predictor(face_predictor_path)
