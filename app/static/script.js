@@ -113,7 +113,7 @@ document.getElementById("get-started").addEventListener("click", function () {
   document.getElementById("upload-demo").scrollIntoView({ behavior: "smooth" });
 });
 
-// ================= Demo Section (updated ) =================
+// ================= Game Section (updated ) =================
 const images = [
      { src: "https://i.ibb.co/XxR3tptM/real-10005.jpg", type: "Real" },
     { src: "https://i.ibb.co/JF7K8PYh/real-1015.jpg", type: "Real" },
@@ -162,14 +162,23 @@ function updateDots(index) {
 }
 
 function checkAnswer(answer) {
+
+    const clickedBtn = answer === "Real" ? realBtn : fakeBtn;
+
     if (answer === images[currentIndex].type) {
-        feedback.textContent = "You got it right!";
+      feedback.textContent = "You got it right!";
+      clickedBtn.style.backgroundColor = "#2ecc71";
+      clickedBtn.style.color = "#ffffffff";
     } else {
-        feedback.textContent = "Oops! Wrong!";
+      feedback.textContent = "Oops! Wrong!";
+      clickedBtn.style.backgroundColor = "#e74c3c"
+      clickedBtn.style.color = "#ffffffff";
     }
     setTimeout(() => {
-        currentIndex = (currentIndex + 1) % images.length;
-        showImage(currentIndex);
+      clickedBtn.style.backgroundColor = "";
+      clickedBtn.style.color = "";
+      currentIndex = (currentIndex + 1) % images.length;
+      showImage(currentIndex);
     }, 1500);
 }
 

@@ -1,11 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Quicksand', sans-serif;
+  /* font-family: 'Open Sans', sans-serif; */
+  /* font-family: 'Source Code Pro', monospace;  */
+  font-family: 'Exo 2', sans-serif;
   scroll-behavior: smooth;
+  /* letter-spacing: 2px; */
 }
-
+p{
+  /* font-family: 'Quicksand', sans-serif; */
+  font-family: 'Open Sans', sans-serif;
+}
 body {
   background: #0a1827; 
   line-height: 1.6;
@@ -112,29 +123,39 @@ header nav a {
 
 /* About  updated */
 #about {
-    padding: 100px 50px;
-    text-align: center;
+    padding: 70px 50px;
+    text-align: left;
+    display :flex;
+    margin: 50px 50px 0 50px;
+    gap: 40px;
 }
 
 #about h2 {
     color: #FF7A00;
-    font-size: 48px;
+    font-size: 42px;
     margin-bottom: 20px;
 }
 
 #about p {
-    font-size: 24px;
-    max-width: 900px;
-    margin: auto;
+    font-size: 20px;
+    max-width: 600px;
     color: #ffffff;
-
 }
+.about-text {
+    flex: 1;
+}
+.about-image img{
+    width: 350px;
+    border-radius: 15px;
+}
+
+
 /* Upload Section */
  #upload-demo H1 {
     text-align: center;
-        font-size: 36px;
-    padding: 25px 0;
-   color: #FF7A00;}
+    font-size: 36px;
+   color: #FF7A00;
+  }
 
 .upload-container {
   width: 100%;
@@ -240,7 +261,7 @@ header nav a {
 }
 
 
-/* ================= Demo Section (updated) ================= */
+/* ================= game Section (updated) ================= */
 
  #demo {
     text-align: center;
@@ -365,10 +386,10 @@ header nav a {
 }
 
 .team-card h3 {
-    font-size: 32px;
+    font-size: 28px;
     color: #ffffff;  
     margin-bottom: 30px;
-    
+ 
 }
 
 .team-card p {
@@ -597,4 +618,11 @@ header nav a {
   #about p {
     font-size: 18px;
   }
+  .about-image img{
+      width: 250px;
+  }
+  #about{
+      flex-direction: column;
+      text-align: center;
+    }
 }
