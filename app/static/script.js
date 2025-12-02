@@ -77,7 +77,7 @@ fileInput.addEventListener('change', (e) => {
 // function to fetch the data from the model's endpoints 
 async function fetchData(element, endpoint, formData) {
   // define the url to the correct route
-  url = `http://localhost:5000/${endpoint}`; 
+  const url = `http://localhost:5000/${endpoint}`; 
   try {
     // send the request and wait for the response
     const response = await fetch(url, {
@@ -217,4 +217,30 @@ faqItems.forEach(item => {
     }
   });
 });
+
+///Nav-bar Section -->
+const sections = document.querySelectorAll(".section");
+const navLinks = document.querySelectorAll(".nav-link");
+
+//when more than half of the section is visible
+const options = {
+  threshold: 0.6 
+};
+
+//intersection observer is used to detect the visible section when scrolling
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      //remove active class from all links
+      navLinks.forEach(link => link.classList.remove("active"));
+
+      //add active class to the current link
+      const id = entry.target.getAttribute("id");
+      document.querySelector(`a[href="#${id}"]`).classList.add("active");
+    }
+  });
+}, options);
+
+//observe each section
+sections.forEach(section => observer.observe(section));
 

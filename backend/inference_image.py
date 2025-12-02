@@ -1,3 +1,6 @@
+from transformers.utils import logging
+logging.set_verbosity_error() # to ignore unnecessary warnings
+
 from transformers import pipeline
 
 # load deepfake image detection model

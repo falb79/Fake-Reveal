@@ -1,20 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   /* font-family: 'Open Sans', sans-serif; */
-  /* font-family: 'Source Code Pro', monospace;  */
   font-family: 'Exo 2', sans-serif;
   scroll-behavior: smooth;
-  /* letter-spacing: 2px; */
 }
 p{
-  /* font-family: 'Quicksand', sans-serif; */
   font-family: 'Open Sans', sans-serif;
 }
 body {
@@ -51,10 +46,15 @@ header {
 
 header nav a {
   color: white;
-  margin-left: 20px;
+  margin-left: 25px;
   text-decoration: none;
   font-weight: 500;
-  font-size: 15px;
+  font-size: 20px;
+}
+
+.nav-link.active {
+  color: #FF7A00;   
+  font-weight: bold;
 }
 
 .logo-box {
@@ -109,6 +109,8 @@ header nav a {
 #hero h2 {
   font-size: 30px;
   margin-bottom: 18px;
+  font-weight: 300;
+  font-family: 'open sans', sans-serif;
 }
 
 #get-started {
@@ -245,10 +247,17 @@ header nav a {
 }
 
 #result-box p {
-  font-size: 18px;
   margin: 6px 0;
 }
-
+#result-text {
+  font-size: 26px;
+  font-weight: 600;
+  color: #FF7A00;
+}
+#result-percent{
+  font-size: 20px;
+  color: #333333;
+}
 #upload-again {
   margin-top: 18px;
   padding: 10px 30px;
