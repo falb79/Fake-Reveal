@@ -77,8 +77,7 @@ def classify_input(lip_reading_text, stt_text):
     similarity = SequenceMatcher(None, lip_reading_text, stt_text).ratio() * 100
     # classify the result as Real/Fake
     if similarity > 50: label = "Real"  
-    else: label = "Fake"
+    else: 
+      label = "Fake" 
+      similarity = 100 - similarity
     return similarity, label
-
-
-   
