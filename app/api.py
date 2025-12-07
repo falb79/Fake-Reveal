@@ -20,6 +20,9 @@ app = Flask(__name__)
 # define the route for using video deepfake detection model
 @app.route('/predict_video', methods=['POST'])
 def predict_video():
+    # check for unsupported file types and return an error
+    if request.mimetype != 'multipart/form-data':
+        return jsonify({"error": "Unsupported Media Type"}), 415
     # check if no video was uploaded and return an error
     if "video" not in request.files:
         return jsonify({"error": "No video file uploaded"}), 400
@@ -63,6 +66,9 @@ def predict_video():
 # define the route for using image deepfake detection model
 @app.route('/predict_image', methods=['POST'])
 def predict_image_output():
+    # check for unsupported file types and return an error
+    if request.mimetype != 'multipart/form-data':
+        return jsonify({"error": "Unsupported Media Type"}), 415
     # check if no image was uploaded and return an error
     if "image" not in request.files:
         return jsonify({"error": "No image file uploaded"}), 400
