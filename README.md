@@ -1,30 +1,33 @@
 ## Prerequisites:
-1. Download cmake - required for dlib
-
-   https://cmake.org/download/
-
-   choose (Windows x64 Installer) or (macOS) 
-2. Download ffmpeg
-
-   https://www.gyan.dev/ffmpeg/builds/
-
-   choose (ffmpeg-git-full.7z)
-
-3. Add both cmake and ffmpeg to system path
-
-   for cmake, add it to system path while installation
+### 1. **Install cmake - required for dlib**
    
-   for FFmpeg, unzip the folder, then use PowerShell (Run as Administrator) to add FFmpeg to SYSTEM PATH
+   Download from:  `https://cmake.org/download/`
+
+   **Choose:** Windows x64 Installer or macOS
    
-4. Install conda (if not already installed)
+   **Note:** Enable *Add to PATH* during installation.  
 
-5. Install Build Tools (if not already installed)
+### 2. **Install ffmpeg**
 
-   from here https://visualstudio.microsoft.com/visual-cpp-build-tools/
-   check (C++ build tools)
+   Download from: `https://www.gyan.dev/ffmpeg/builds/`
+   
+   **Choose:** `ffmpeg-git-full.7z`
+   
+   **Note:** Unzip the folder, then use PowerShell (Run as Administrator) to add FFmpeg to SYSTEM PATH
 
    
-## To use the project for the first time: 
+### 3. **Install Conda:**
+   
+   Install Anaconda or Miniconda (if not already installed).
+
+### 4. **Install Build Tools** 
+
+   Download: `https://visualstudio.microsoft.com/visual-cpp-build-tools/`
+   
+   **Note:** Choose C++ build tools when installing
+
+   
+## Project setup for the first time: 
 
 ### 1. Clone our project's repository 
 `git clone https://github.com/falb79/Fake-Reveal`
@@ -61,28 +64,39 @@ cd fairseq
 pip install --editable ./
 ```
 
-if you encountered any issues for this command, use Anaconda CMD as Administrator 
-
-
-### to close the virtual environment run: conda deactivate 
+**Note**: If you face permission issues, run Anaconda CMD as Administrator.
 
 
 ## Download checkpoint and files needed for preprocessing
-In the project create a folder called models
 
-place model checkpoint "fine-tuned model", shape_predictor_68_face_landmarks.dat, and 20words_mean_face.npy in this folder
+Create a folder inside the project named (models) and add:
 
-You will find them in their GitHub repository `https://github.com/facebookresearch/av_hubert`
-and in the demo provided.
+   - Fine-tuned model
+
+   - shape_predictor_68_face_landmarks.dat
+
+   - 20words_mean_face.npy
+
+These files can be found in the AV-HuBERT repository `https://github.com/facebookresearch/av_hubert` or the demo files provided.
+
+## Required Additional Folders
+
+📂Inside the project directory, create these empty folders:
+
+   - uploads
+   
+   - mouth_roi
+
 
 
 ## To run the project:
-Open the project in VS code
+Open the project in VS Code, then in the terminal:
+```
+conda activate venv_py39
 
-open the terminal and run: `conda activate venv_py39`
+python app/api.py
+```
 
-run: `python app/api.py`
-
-### Note: also create folders uploads and mouth_roi inside the project folder 
+**Note:** to close the virtual environment run: conda deactivate 
 
 
