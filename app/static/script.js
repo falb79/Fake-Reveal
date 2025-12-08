@@ -11,7 +11,7 @@ const resultPercentage = document.getElementById('result-percentage');
 const uploadAgainBtn = document.getElementById('upload-again');
 
 // default the current user selection to image
-let currentType = 'image';
+let currentType = 'video';
 
 // add event listener to the image button to change the current selection
 // and update the accepted file types
