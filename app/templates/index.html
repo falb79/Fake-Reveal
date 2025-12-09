@@ -59,7 +59,7 @@
   <div class="section-inner">
     <h1>Fake Reveal Detector</h1>
     <div class="upload-container">
-      <h2>Upload a Video /Image</h2>
+      <h2 id="upload-text">Upload a Video /Image</h2>
 
       <!-- Upload Box -->
       <div id="upload-box-container">
@@ -68,9 +68,18 @@
           <button id="image-btn" >Image</button>
         </div>
         <div class="upload-box">
-          <input type="file" id="file-input" accept="video/*">
+          <img src="../static/assets/upload.png" alt="Upload Icon" class="upload-icon">
+          <button id="browseBtn">Browse files</button>
+          <input type="file" id="file-input" accept=".mp4, .mov" style="display: none;">
+          <p class = "supported-formats" id="formats">Supported video Formats are: MP4, MOV</p>
         </div>
-      </div>
+        </div>
+        <!-- Error Box -->
+        <div id="error-box" class="error-box" style="display: none;" >
+          <img src="../static/assets/warning.png" alt="warning Icon" class="warning-icon">
+          <p id="error-message"></p>
+          <button id="retry-btn">Try Again</button>
+        </div>
 
       <!-- Spinner Box -->
       <div id="spinner-box" style="display:none;">
