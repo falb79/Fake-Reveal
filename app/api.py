@@ -63,41 +63,50 @@ def predict_video():
         if os.path.exists(video_path):
             os.remove(video_path)
 
-# define the route for using image deepfake detection model
 @app.route('/predict_image', methods=['POST'])
 def predict_image_output():
     # check for unsupported file types and return an error
     if request.mimetype != 'multipart/form-data':
-        return jsonify({"error": "Unsupported Media Type"}), 415
+        return jsonify({"error": "Unsupported Media Type, please use multipart/form-data"}), 415
+        
     # check if no image was uploaded and return an error
+    # Note: request.files is usually empty if mimetype is wrong, but this check remains valid
     if "image" not in request.files:
         return jsonify({"error": "No image file uploaded"}), 400
 
-    # get the image file from the request 
-    image_file = request.files["image"]
+    # Initialize path to None for safe cleanup in case of early error
+    image_path = None
+    try:
+        # get the image file from the request 
+        image_file = request.files["image"]
 
-    # save temporary image file
-    image_path = "uploads/temp_image.jpg"
-    image_file.save(image_path)
+        # save temporary image file
+        image_path = "uploads/temp_image.jpg"
+        image_file.save(image_path)
 
-    # get the results from the image deepfake detection model
-    label, score = predict_image(image_path)
+        # get the results from the image deepfake detection model
+        label, score = predict_image(image_path)
 
-    # format the result as a JSON object
-    result = jsonify({
-            "label": label,
-            "score": f"{score*100:.2f}"
-        })
-    # add header to the response
-    result.headers.add("Access-Control-Allow-Origin", "*")
+        # format the result as a JSON object
+        result = jsonify({
+                    "label": label,
+                    "score": f"{score*100:.2f}"
+                })
+        # add header to the response
+        result.headers.add("Access-Control-Allow-Origin", "*")
 
-    # remove temporary image file 
-    if os.path.exists(image_path):
-        os.remove(image_path)
-        
-    # return the result
-    return result
-    
+        # return the result
+        return result
+
+    except Exception as e:
+        # Handle internal errors (e.g., model crash, file save error)
+        print(f"Internal error during image prediction: {e}")
+        return jsonify({"error": str(e)}), 500
+    finally:
+        # remove temporary image file even if an error occurred (Cleanup guarantee)
+        if image_path and os.path.exists(image_path):
+            os.remove(image_path)
+                
 
 # define the main route to the website
 @app.route("/", methods=["GET"])
@@ -107,3 +116,6 @@ def root():
 # run the app
 if __name__ == "__main__":
     app.run(debug=True)
+
+def create_app():
+    return app
