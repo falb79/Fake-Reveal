@@ -1,6 +1,6 @@
-# Fake Reveal
+# About the project
 
-Fake-Reveal is an AI-powered platform dedicated to detecting and revealing deepfake videos.
+We present Fake-Reveal, an AI-powered platform dedicated to detecting and revealing deepfake videos.
 
 It analyzes video content using advanced deep learning models to identify subtle inconsistencies in lip movements and facial features. The primary goal is to provide a reliable tool for verifying video authenticity, helping both researchers and the public combat fake media content.
 
@@ -110,24 +110,10 @@ python app/api.py
 ## Citations
 We acknowledge and are grateful for the foundational work provided by the following open-source projects and research papers.
 
-1- AV-HuBERT:
-
-@article{shi2022avhubert,
-    author  = {Bowen Shi and Wei-Ning Hsu and Kushal Lakhotia and Abdelrahman Mohamed},
-    title = {Learning Audio-Visual Speech Representation by Masked Multimodal Cluster Prediction},
-    journal = {arXiv preprint arXiv:2201.02184}
-    year = {2022}
-}
-
-@article{shi2022avsr,
-    author  = {Bowen Shi and Wei-Ning Hsu and Abdelrahman Mohamed},
-    title = {Robust Self-Supervised Audio-Visual Speech Recognition},
-    journal = {arXiv preprint arXiv:2201.01763}
-    year = {2022}
-}
-
-2. ViT Deepfake Image Detection :
-To enhance user experience, we used the API from Dima806's project on Kaggle for image classification.
-[Deepfake vs real faces detection ViT](https://www.kaggle.com/code/dima806/deepfake-vs-real-faces-detection-vit/notebook)
+1. [AV-HuBERT lip reading model](https://github.com/facebookresearch/av_hubert)
 
 
+2. [Deepfake vs real faces detection ViT](https://www.kaggle.com/code/dima806/deepfake-vs-real-faces-detection-vit/notebook)
+
+
+3. [OpenAI whisper](https://platform.openai.com/docs/guides/speech-to-text)
