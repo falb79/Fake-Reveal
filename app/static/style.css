@@ -44,6 +44,12 @@ header {
   z-index: 10;
 }
 
+.menu-btn {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
 header nav a {
   color: white;
   margin-left: 25px;
@@ -614,13 +620,29 @@ header nav a {
 
 /* Responsive tweaks */
 @media (max-width: 900px) {
-  header {
-    padding: 14px 18px;
+  nav {
+    display: none;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: #0B1B2B;
+    width: 100%;
+    flex-direction: column;
+    padding: 5px;
+    text-align: center;
   }
 
-  header nav a {
-    margin-left: 12px;
-    font-size: 14px;
+  nav a {
+    margin: 7px 0;
+    font-size: 18px;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
+  nav.active {
+    display: flex;
   }
 
   #hero {
@@ -672,4 +694,18 @@ header nav a {
       flex-direction: column;
       text-align: center;
     }
+  .footer-logo {
+    width: 60px;
+}
+  #footer h2 {
+    font-size: 26px;
+}
+  #footer {
+  padding:30px ;
+  text-align: center  ;
+  justify-content: center ;
+  gap:30px ;
+
+}
+
 }

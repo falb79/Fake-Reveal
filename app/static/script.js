@@ -291,3 +291,11 @@ const observer = new IntersectionObserver((entries) => {
 //observe each section
 sections.forEach(section => observer.observe(section));
 
+//mobile menu toggle
+const menuBtn = document.getElementById("menu-btn");
+const navMenu = document.getElementById("nav-menu");
+
+  menuBtn.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
+  });
+
