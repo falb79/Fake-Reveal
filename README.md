@@ -107,6 +107,31 @@ python app/api.py
 
 **Note:** to close the virtual environment run: conda deactivate 
 
+## To Run Python Tests:
+
+### First create required test data folder
+
+📂Inside the tests folder, create a test_data folder containing:
+   - two files: test_video.mp4 and test_image.jpg (for API unit test)
+   - real folder: this contains the real videos from the dataset (for model testing)
+   - fake folder: this contains the fake videos from the dataset (for model testing)
+   
+
+Open the project in VS Code, then in the terminal:
+`conda activate venv_py39`
+
+### To run model test:
+run: `python tests/model_testing/evaluate.py`
+
+### To run unit test:
+
+**To run a specific test file use: python -m unittest tests.unit_testing.python.fileNameHere**
+For example to run `test_api.py`: `python -m unittest tests.unit_testing.python.test_api`
+
+**To run a specific test cases use: python -m unittest tests.unit_testing.python.fileNameHere.className.functionName**
+For example to run `test_homepage_load` from `test_api.py`: `python -m unittest tests.unit_testing.python.test_api.TestAPI.test_homepage_load`
+
+
 ## Citations
 We acknowledge and are grateful for the foundational work provided by the following open-source projects and research papers.
 
