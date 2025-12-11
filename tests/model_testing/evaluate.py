@@ -111,7 +111,7 @@ if __name__ == "__main__":
     
     # Run evaluation
     evaluate_directory(os.path.join(DATA_DIR, 'real'), 'Real')
-   # evaluate_directory(os.path.join(DATA_DIR, 'fake'), 'Fake')
+    evaluate_directory(os.path.join(DATA_DIR, 'fake'), 'Fake')
     
     # Display report
     generate_simple_report()
