@@ -169,7 +169,7 @@ document.getElementById("get-started").addEventListener("click", function () {
   document.getElementById("upload-demo").scrollIntoView({ behavior: "smooth" });
 });
 
-// ================= Game Section (updated ) =================
+//  Game Section 
 const images = [
   { src: "https://i.ibb.co/XxR3tptM/real-10005.jpg", type: "Real" },
   { src: "https://i.ibb.co/JF7K8PYh/real-1015.jpg", type: "Real" },
