@@ -129,7 +129,7 @@ header nav a {
   cursor: pointer;
 }
 
-/* About  updated */
+/* About */
 #about {
     padding: 70px 50px;
     text-align: left;
@@ -314,7 +314,7 @@ header nav a {
 }
 
 
-/* ================= game Section (updated) ================= */
+/* game Section  */
 
  #demo {
     text-align: center;
@@ -335,6 +335,22 @@ header nav a {
     align-items: flex-end;
     gap: 25px;
     margin-bottom: 25px;
+}
+.learn-game {
+  font-size: 0.9rem; 
+  margin-top: 5px;
+}
+
+.learn-game a {
+  color: #909090;      
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.learn-game a:hover {
+  text-decoration: underline;
+    color: #ffffff;      
+
 }
 
 .demo-card {
@@ -409,7 +425,7 @@ header nav a {
 }
 
 
-/* Meet The Team (updated)*/
+/* Meet The Team */
  #team {
     padding: 100px 50px;
     text-align: center;
@@ -501,7 +517,7 @@ header nav a {
   width: 100%;
   text-align: left;
   padding: 14px 16px;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 600;
   border: none;
   background-color: #FFFAF0;
@@ -524,7 +540,7 @@ header nav a {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease;
-  padding-left: 16px;
+  padding-left: 18px;
   background-color: #fff8f0;
   border-left: 3px solid #FF7A00;
   border-radius: 0 0 10px 10px;
@@ -536,7 +552,7 @@ header nav a {
   color: #0B1B2B;
 }
 
-/* ================= Footer (Updated) ================= */
+/* Footer  */
 #footer {
     background: #0B1B2B;
     color: #d1d1d1;
@@ -590,13 +606,13 @@ header nav a {
 }
 
 .footer-icon {
-    width: 32px;          /* use the same size for all icons */
+    width: 32px;         
     height: 32px;
     opacity: 0.9;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 28px;      /* لأيقونة الفاونت أوسوم */
+    font-size: 28px;     
     color: #d1d1d1;
 }
 
