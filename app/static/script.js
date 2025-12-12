@@ -120,8 +120,10 @@ async function fetchData(element, endpoint, formData) {
     const data = await response.json(); // parse the JSON response
     // call the showResult function to display the results 
     showResult(data["label"], data["score"]);
+    console.log("Label:",data["label"],"\nScore:" ,data["score"],"\nLip_reading_text:",data["lip_reading_text"],".\n Speech_text:",data["speech_text"]);
   } catch (error) {
     console.error("Error fetching data:", error);
+    alert("An error occurred while processing the file. Please try again.");
   }
   finally {
     // hide the spinner and display the uploaded file
@@ -169,7 +171,7 @@ document.getElementById("get-started").addEventListener("click", function () {
   document.getElementById("upload-demo").scrollIntoView({ behavior: "smooth" });
 });
 
-//  Game Section 
+// ================= Game Section (updated ) =================
 const images = [
   { src: "https://i.ibb.co/XxR3tptM/real-10005.jpg", type: "Real" },
   { src: "https://i.ibb.co/JF7K8PYh/real-1015.jpg", type: "Real" },

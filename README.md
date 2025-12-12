@@ -141,4 +141,4 @@ We acknowledge and are grateful for the foundational work provided by the follow
 2. [Deepfake vs real faces detection ViT](https://www.kaggle.com/code/dima806/deepfake-vs-real-faces-detection-vit/notebook)
 
 
-3. [OpenAI whisper](https://platform.openai.com/docs/guides/speech-to-text)
+3. [OpenAI whisper](https://openai.com/index/whisper/)
