@@ -131,6 +131,7 @@ For example to run `test_api.py`: `python -m unittest tests.unit_testing.python.
 **To run a specific test cases use: python -m unittest tests.unit_testing.python.fileNameHere.className.functionName**
 For example to run `test_homepage_load` from `test_api.py`: `python -m unittest tests.unit_testing.python.test_api.TestAPI.test_homepage_load`
 
+**To run integration tests : `pytest tests/integration_testing`
 
 ## Citations
 We acknowledge and are grateful for the foundational work provided by the following open-source projects and research papers.
