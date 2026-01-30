@@ -2,7 +2,7 @@
 
 We present Fake-Reveal, an AI-powered platform dedicated to detecting and revealing deepfake videos.
 
-It analyzes video content using advanced deep learning models to identify subtle inconsistencies in lip movements and facial features. The primary goal is to provide a reliable tool for verifying video authenticity, helping both researchers and the public combat fake media content.
+It analyzes video content using advanced deep learning models to identify subtle inconsistencies in lip movements and audio. The primary goal is to provide a reliable tool for verifying video authenticity, helping both researchers and the public combat fake media content.
 
 
 ## Prerequisites:
