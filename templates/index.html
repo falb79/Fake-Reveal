@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fake Reveal</title>
+  <link rel="icon" href="../static/assets/logo-dark.png" type="image/x-icon" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="../static/assets/logo-light.png" type="image/x-icon" media="(prefers-color-scheme: dark)">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../static/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Lexend+Deca:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+
+  <!----------- Header Section-------------->
+  <header>
+    <div class="logo-box">
+      <img src="../static/assets/logo-light.png" alt="Logo" class="logo-img">
+      <div class="logo">Fake Reveal</div>
+    </div>
+    <div class="menu-btn" id="menu-btn">
+      ☰
+    </div>
+    <nav id="nav-menu">
+      <a href="#hero" class="nav-link">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#upload-demo" class="nav-link">Detector</a>
+      <a href="#demo" class="nav-link">Guess It</a>
+      <a href="#team" class="nav-link">Team</a>
+      <a href="#faq" class="nav-link">FAQ</a>
+    </nav>
+  </header>
+
+  <!----------- Hero Section ---------->
+
+  <section id="hero" class="section">
+
+    <video autoplay muted loop playsinline id="hero-video">
+      <source src="static/assets/man.mp4" type="video/mp4">
+    </video>
+
+    <div class="overlay"></div>
+    <div class="scan-line"></div>
+
+    <div class="hero-content">
+      <h1 class="hero-title">Don’t trust what you see.</h1>
+
+      <p class="hero-subtitle">
+        Detect deepfake videos instantly using AI-powered analysis.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#upload-demo" class="btn-primary">Analyze a Video</a>
+        <a href="#pipeline" class="btn-secondary">How it works</a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-------- About Section---------->
+  <section id="about" class="section">
+    <div class="about-text">
+      <h2>What is Fake Reveal</h2>
+      <p class="about-p">Fake Reveal analyzes the sync between lip movements and audio signals to expose deepfakes in
+        speech-based videos with high accuracy.</p>
+      <br>
+      <!-- <div class="about-image">
+    <img src="../static/assets/Detection.png" alt="About Image">
+            </div> -->
+      <div class="use-cases">
+        <!-- <h3>Where Can It Be Used?</h3> -->
+        <div class="use-cases-grid">
+
+          <div class="use-card">
+            <i class="fa-solid fa-microphone-lines"></i>
+            <h4>Speech Verification</h4>
+            <p>Detect mismatches between audio and lip movements.</p>
+          </div>
+
+          <div class="use-card">
+            <i class="fa-solid fa-bullhorn"></i>
+            <h4>Public Speeches</h4>
+            <p>Detect manipulation in speeches of public figures.</p>
+          </div>
+
+          <div class="use-card">
+            <i class="fa-solid fa-tv"></i>
+            <h4>News Verification</h4>
+            <p>Validate that news anchors’ videos are genuine.</p>
+          </div>
+
+          <div class="use-card">
+            <i class="fa-solid fa-user-shield"></i>
+            <h4>Social Media Videos</h4>
+            <p>Detect altered speech in talking videos.</p>
+          </div>
+
+        </div>
+      </div>
+  </section>
+
+  <!------- Upload Section -------->
+  <section id="upload-demo" class="section">
+    <div class="section-inner">
+      <h1>Fake Reveal Detector</h1>
+
+      <div class="upload-container">
+
+        <!-- Upload Box -->
+        <div id="upload-box-container">
+          <div class="upload-box">
+            <img src="../static/assets/upload.png" alt="Upload Icon" class="upload-icon">
+
+            <button id="browseBtn" type="button">Browse files</button>
+
+            <input type="file" id="file-input" accept=".mp4, .mov, video/mp4, video/quicktime" style="display: none;">
+            <p class="paste-hint">
+              Or copy a video file and press Ctrl + V
+            </p>
+
+            <p class="supported-formats" id="formats">
+              Supported Video Formats are: MP4, MOV. Max file size is 13MB. 
+            </p>
+
+
+          </div>
+        </div>
+
+        <!-- Error Box -->
+        <div id="error-box" class="error-box" style="display: none;">
+          <img src="../static/assets/warning.png" alt="warning Icon" class="warning-icon">
+          <p id="error-message"></p>
+          <button id="retry-btn" type="button">Try Again</button>
+        </div>
+
+        <!-- Spinner Box -->
+        <div id="spinner-box" style="display:none;">
+          <div class="spinner-wrapper">
+            <div class="spinner"></div>
+            <p id="upload-percentage">0%</p>
+          </div>
+          <p class="spinner-text1">THE TRUTH IS ABOUT TO REVEAL</p>
+          <p class="spinner-text2">It's going to take a few seconds</p>
+          </div>
+          
+          <!-- Result Box -->
+          <div id="result-box" style="display:none;">
+            <h1>Uploaded Video</h1>
+            <div id="preview"></div>
+            <p id="result-text" class="result">The video you uploaded has a <span id="result-percentage"
+                class="result-probability">---</span> probability
+              <span id="result-percent" class="result">of being: <span id="result-label">---</span></span>
+            </p>
+            <div id="localization">
+              <button id="view-analysis">View Analysis</button>
+              <br>
+              <div id="analysis">
+                <h1>Analysis of Results</h1>
+                <p class="localization-result">The system has compared the visual Lip Reading text against the generated
+                  text from the audio transcript, and analyzed the audio track to detect AI generated audio. Any mismatch between
+                  what was spoken and what was heard is highlighted below.</p>
+                <p class="localization-result">Words highlighted in red indicate where the visual lip movements do not
+                  match the captured audio.</p>
+                <br>
+                <p class="localization-card">Speech-to-Text Result (Audio Source): <span id="audio-text">---</span>
+                </p>
+                <br>
+                <p class="localization-card">Lip Reading Result (Visual Source): <span id="visual-text">---</span>
+                </p>
+                <br>
+                <div>
+                  <p class="localization-result">As you play the video, a Red Overlay will appear during parts where a
+                    difference was detected (The "Deepfake" part of the video).</p>
+                  <button id="localization-hint">Why am I
+                    seeing red?</button>
+                  <p id="localization-hint-output" class="localization-result" style="display: none; font-size: 16px;">The
+                    red tint indicates that the Lip Reading prediction differs significantly from the Speech-to-Text
+                    output. This allows you to visually verify the speaker's mouth movements against the audio during the
+                    fake segment.
+                  </p>
+                </div>
+                <video id="player" controls width="300">
+                  <source id="videoSource" src="" type="video/mp4">
+                </video>
+                <br>
+                <button id="hide-analysis" style="display: none;">Hide Analysis</button>
+              </div>
+            </div>
+
+            <div class="result-actions">
+              <button id="copy-result" type="button">Copy Result</button>
+              <button id="upload-again">Upload Again</button>
+            </div>
+            
+            <p id="copy-message" class="copy-message"></p>
+            </div>
+            </section>
+
+  <!-------Pipeline Layers Section------------->
+  <section id="pipeline" class="section">
+    <h2>Detection Layers</h2>
+    <p>Our detection process consists of several stages, each designed to analyze different aspects of the video to
+      determine its authenticity.</p>
+
+    <div class="layer-stack" id="layerStack">
+
+      <!-- CARD 1: Lip Movement -->
+      <div class="layer-card" data-index="0">
+        <div class="layer-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ff7b00" stroke-width="1.6" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M12 18c-4 0-7-2.5-7-5s3-5 7-5 7 2.5 7 5-3 5-7 5z" />
+            <path d="M9 15c1 1 5 1 6 0" />
+            <circle cx="9.5" cy="13" r="0.5" fill="#ff7b00" stroke="none" />
+            <circle cx="14.5" cy="13" r="0.5" fill="#ff7b00" stroke="none" />
+            <path d="M8 10c0-2 1.5-3.5 4-3.5s4 1.5 4 3.5" stroke-dasharray="2 1.5" opacity="0.5" />
+          </svg>
+        </div>
+        <div class="layer-info">
+          <div class="layer-num">Layer 01</div>
+          <div class="layer-title">Lip Movement Analysis</div>
+          <div class="layer-desc">Tracking facial landmarks to detect inconsistencies between lip motion and speech
+            patterns.</div>
+        </div>
+        <div class="layer-dots">
+          <span class="active-dot"></span><span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <div class="layer-connector" id="c0"></div>
+
+      <!-- CARD 2: Audio -->
+      <div class="layer-card" data-index="1">
+        <div class="layer-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ff7b00" stroke-width="1.6" stroke-linecap="round"
+            stroke-linejoin="round">
+            <line x1="4" y1="12" x2="4" y2="12" />
+            <line x1="7" y1="8" x2="7" y2="16" />
+            <line x1="10" y1="5" x2="10" y2="19" />
+            <line x1="13" y1="9" x2="13" y2="15" />
+            <line x1="16" y1="6" x2="16" y2="18" />
+            <line x1="19" y1="10" x2="19" y2="14" />
+          </svg>
+        </div>
+        <div class="layer-info">
+          <div class="layer-num">Layer 02</div>
+          <div class="layer-title">Audio Analysis</div>
+          <div class="layer-desc">Examining spectral features and voice patterns for signs of synthetic audio
+            generation.</div>
+        </div>
+        <div class="layer-dots">
+          <span></span><span class="active-dot"></span><span></span><span></span>
+        </div>
+      </div>
+
+      <div class="layer-connector" id="c1"></div>
+
+      <!-- CARD 3: Speech to Text -->
+      <!-- <div class="layer-card" data-index="2">
+      <div class="layer-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#ff7b00" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="14" rx="3"/>
+          <path d="M8 21h8M12 17v4"/>
+          <path d="M7 8h4M7 11h6" stroke-width="1.4" opacity="0.7"/>
+          <circle cx="16" cy="9.5" r="2.5"/>
+          <path d="M16 12v1.5" stroke-width="1.8"/>
+        </svg>
+      </div>
+      <div class="layer-info">
+        <div class="layer-num">Layer 03</div>
+        <div class="layer-title">Speech to Text Processing</div>
+        <div class="layer-desc">Transcribing and verifying alignment between spoken content and expected script data.</div>
+      </div>
+      <div class="layer-dots">
+        <span></span><span></span><span class="active-dot"></span><span></span>
+      </div>
+    </div> -->
+
+      <!-- <div class="layer-connector" id="c2"></div> -->
+
+      <!--CARD 4: AI Verification -->
+      <div class="layer-card" data-index="3">
+        <div class="layer-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ff7b00" stroke-width="1.6" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M12 2l2.8 5.6L21 8.7l-4.5 4.4 1.1 6.3L12 16.6l-5.6 2.8 1.1-6.3L3 8.7l6.2-.9L12 2z" />
+            <circle cx="12" cy="12" r="2.5" fill="rgba(255,123,0,0.2)" stroke="#ff7b00" />
+          </svg>
+        </div>
+        <div class="layer-info">
+          <div class="layer-num">Layer 04</div>
+          <div class="layer-title">AI Verification Layer</div>
+          <div class="layer-desc">A final neural pass combining all signals for a confidence-weighted authenticity
+            score.</div>
+        </div>
+        <div class="layer-dots">
+          <span></span><span></span><span></span><span class="active-dot"></span>
+        </div>
+      </div>
+
+      <!-- RESULT -->
+      <div class="layer-card" id="resultCard">
+        <div class="check-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ff7b00" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+        </div>
+        <div class="layer-info">
+          <div class="layer-title">Verification Complete</div>
+          <div class="layer-desc">Analysis Finished</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!------- Guess It Game Section -------->
+
+  <section id="demo" class="section">
+    <h2 class="demo-title">Try to Guess It</h2>
+
+    <p class="game-instruction">
+      Watch each video carefully, then choose whether you think it is Real or Fake.
+    </p>
+    <!-- <p>Do you think This video is real or fake?</p> -->
+
+    <div class="demo-wrapper" id="demo-wrapper">
+      <!-- Images will appear here from JavaScript -->
+    </div>
+
+    <div class="demo-dots" id="demo-dots">
+      <!-- The dots will update dynamically -->
+    </div>
+
+    <p class="demo-question"></p>
+
+    <div class="demo-buttons">
+      <button class="real-btn" id="real-btn">Real</button>
+      <button class="fake-btn" id="fake-btn">Fake</button>
+    </div>
+<p id="live-score" class="live-score">Score: 0 / 10</p>
+    <p class="demo-feedback" id="demo-feedback"></p>
+    
+  </section>
+
+
+
+
+
+  <!-- Meet The Team -->
+  <section id="team" class="section">
+    <h2>Meet The Team</h2>
+
+    <div class="team-grid">
+
+      <div class="team-card">
+        <div class="team-avatar">
+          <i class="fa-solid fa-laptop-code"></i>
+        </div>
+        <h3>Lujain Bajunaid</h3>
+        <p>Developer</p>
+        <a class="email" href="mailto:lgunaid.stu@uj.edu.sa">
+          <i class="fa-solid fa-envelope"></i>
+        </a>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">
+          <i class="fa-solid fa-laptop-code"></i>
+        </div>
+        <h3>Fatima Lajam</h3>
+        <p>Developer</p>
+        <a class="email" href="mailto:flajam.stu@uj.edu.sa">
+          <i class="fa-solid fa-envelope"></i>
+        </a>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">
+          <i class="fa-solid fa-laptop-code"></i>
+        </div>
+        <h3>Layan Aljohani</h3>
+        <p>Developer</p>
+        <a class="email" href="mailto:laljehani0017.stu@uj.edu.sa">
+          <i class="fa-solid fa-envelope"></i>
+        </a>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">
+          <i class="fa-solid fa-laptop-code"></i>
+        </div>
+        <h3>Amal Aladel</h3>
+        <p>Developer</p>
+        <a class="email" href="mailto:aaladl.stu@uj.edu.sa">
+          <i class="fa-solid fa-envelope"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="section">
+    <div class="section-inner">
+      <div class="faq-heading">
+        <h2>Frequently Asked Questions</h2>
+      </div>
+
+      <div class="faq-container">
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What is Fake Reveal?</span>
+            <i class="fa-solid fa-plus"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Fake Reveal is a platform for detecting fake videos .</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How do you classify videos?</span>
+            <i class="fa-solid fa-plus"></i>
+          </button>
+          <div class="faq-answer">
+            <p>We use AI models to determine if a video is real or fake.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Is it free to use?</span>
+            <i class="fa-solid fa-plus"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Yes, our basic features are free for all users.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How accurate is the detection?</span>
+            <i class="fa-solid fa-plus"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Our AI models have a high accuracy rate, but no system is 100% perfect.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!---------- Footer ------------>
+  <footer id="footer">
+    <div class="footer-left">
+      <div class="footer-logo-box">
+        <img src="../static/assets/logo-light.png" class="footer-logo" alt="Fake Reveal Logo">
+        <h2>Fake Reveal</h2>
+      </div>
+      <p>Advanced AI-powered deepfake detection</p>
+    </div>
+
+
+    <div class="footer-right">
+      <h3>Contact Us</h3>
+
+      <div class="footer-item">
+        <i class="fa-solid fa-envelope footer-icon"></i>
+        <a href="mailto:Fakereveal@uj.edu.sa">Fakereveal@uj.edu.sa</a>
+      </div>
+
+      <div class="footer-item">
+        <img src="../static/assets/github1.png" class="footer-icon">
+        <a href="https://github.com/falb79/DeepfakeVideoDetection">github/fakereveal.com</a>
+      </div>
+    </div>
+
+  </footer>
+
+  <p class="copyright">Copyright© 2026 Fake Reveal.</p>
+
+
+  <script defer src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
