@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify, Response, send_from_
 import requests
 import cv2, os, numpy as np
 import subprocess, glob
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
@@ -112,37 +113,17 @@ def send_to_colab():
     
 @app.route('/get_video/<filename>')
 def get_video(filename):
+    filename = secure_filename(filename)
     # log what the browser is requesting 
     print(f"Browser is asking for: {filename}") 
     
     # check if the file exists before sending
     file_path = os.path.join(os.path.abspath(UPLOAD_FOLDER), filename)
     if not os.path.exists(file_path):
-        print(f"ERROR: {file_path} does not exist!")
+        print(f"ERROR: {os.path.relpath(file_path)} does not exist!")
         return "File not found", 404
 
     return send_from_directory(os.path.abspath(UPLOAD_FOLDER), filename)
-
-# old Endpoint
-# @app.route('/send_to_colab', methods=['POST'])
-# def send_to_colab():
-#     try:
-#         video_file = request.files['video']
-#         files = {'video': (video_file.filename, video_file.read(), video_file.content_type)}
-        
-#         response = session.post(COLAB_API_URL, files=files, timeout=10000)
-        
-#         print("Status Code:", response.status_code)
-#         print("Raw Response:", response.text) 
-
-#         if response.status_code == 200:
-#             return jsonify(response.json())
-#         else:
-#             return jsonify({"error": f"Colab returned error {response.status_code}"}), 500
-            
-#     except Exception as e:
-#         print(f"🔴 Error: {str(e)}")
-#         return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
     app.run(port=8000, debug=True)

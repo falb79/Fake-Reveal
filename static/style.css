@@ -60,7 +60,7 @@ header nav a {
   margin-left: 25px;
   text-decoration: none;
   font-weight: 500;
-  font-size: 25px;
+  font-size: 20px;
 }
 
 .nav-link.active {
@@ -1092,7 +1092,8 @@ header nav a {
     background: #07101a;
     color: #d1d1d1;
     display: flex;
-    justify-content: space-between;
+    justify-content:center;
+    gap: 800px;
     padding: 60px 80px;
     align-items: center;
     flex-wrap: wrap;
@@ -1105,8 +1106,8 @@ header nav a {
 }
 
 .footer-logo {
-    width: 90px;
-    margin-bottom: 10px;
+    width: 110px;
+    margin-bottom: 50px;
     
 }
 .footer-logo-box {
@@ -1116,19 +1117,19 @@ header nav a {
 }
 
 #footer h2 {
-    font-size: 32px;
+    font-size: 36px;
     color: white;
     font-weight: 700;
 }
 
 #footer p {
-    font-size: 18px;
+    font-size: 20px;
     max-width: 300px;
     color: #bfbfbf;
 }
 
 .footer-right h3 {
-    font-size: 28px;
+    font-size: 34px;
     color: white;
     margin-bottom: 20px;
 }
@@ -1154,7 +1155,7 @@ header nav a {
 .footer-item a {
     color: #d2d2d2;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 20px;
     display: block;
     line-height: 1.4;
 }
@@ -1260,18 +1261,78 @@ header nav a {
 .use-cases-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-}
 
-@media (max-width: 900px) {
-  .use-cases-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  #pipeline {
+        padding: 40px 15px;
+    }
+
+    #pipeline > p {
+        font-size: 18px;
+        margin-bottom: 40px;
+    }
+
+    .layer-stack {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
+    .layer-card {
+        width: 100%; 
+        max-width: 100%;
+        
+        padding: 20px 22px;
+        gap: 15px;
+        
+        transform: perspective(1000px) rotateX(20deg) translateY(-10px);
+        margin-bottom: -45px;
+    }
+
+    .layer-card.active {
+        transform: perspective(1000px) rotateX(0deg) translateY(0);
+        margin-bottom: 15px;
+    }
+
+    .layer-card.past {
+        transform: perspective(1000px) rotateX(-5deg) translateY(5px) scale(0.95);
+        margin-bottom: 15px;
+    }
+
+    .layer-icon {
+        width: 50px;
+        height: 50px;
+        min-width: 50px;
+    }
+
+    .layer-icon svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .layer-title {
+        font-size: 20px; 
+        margin-bottom: 4px;
+    }
+
+    .layer-desc {
+        font-size: 14px; 
+        line-height: 1.4;
+    }
+
+    .layer-num {
+        font-size: 12px;
+        letter-spacing: 1px;
+    }
+
+    .layer-dots {
+        display: none; 
+    }
 }
 
 @media (max-width: 500px) {
   .use-cases-grid {
     grid-template-columns: 1fr;
   }
+  
 }
 
 
